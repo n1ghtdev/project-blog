@@ -21,17 +21,17 @@ public class BlogController {
   @Autowired
   private BlogService blogService;
 
-  @RequestMapping("/blog")
+  @RequestMapping("/api/blog")
   public List<BlogNote> getAllNotes() {
     return blogService.getAllNotes();
   }
 
-  @RequestMapping("/blog/{id}")
+  @RequestMapping("/api/blog/{id}")
   public BlogNote getNote(@PathVariable String id) {
     return blogService.getNote(id);
   }
 
-  @PostMapping(value="/blog", consumes = MediaType.APPLICATION_JSON_VALUE)
+  @PostMapping(value="/api/blog", consumes = MediaType.APPLICATION_JSON_VALUE)
   public void addNote(@RequestBody BlogNote note) {
     blogService.addNote(note);
   }
