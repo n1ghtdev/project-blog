@@ -20,4 +20,8 @@ public class BlogService {
     return notes;
   };
 
+  public BlogNote getNote(String id) {
+    return notes.stream().filter(t -> t.getId().equals(id)).findFirst().get();
+  }
+
 }
