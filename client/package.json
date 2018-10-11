@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --config ./internals/webpack/webpack.dev.babel.js"
+    "clean": "rimraf build",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config ./internals/webpack/webpack.dev.babel.js",
+    "build": "cross-env npm run clean NODE_ENV=production && webpack --config internals/webpack/webpack.prod.babel.js"
   },
   "author": "Nickew",
   "license": "ISC",

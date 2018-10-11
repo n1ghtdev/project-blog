@@ -26,3 +26,7 @@
 
 ### Client ###
 /client/node_modules
+/client/build
+
+### Server ###
+/server/src/main/resources/public

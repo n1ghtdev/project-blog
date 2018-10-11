@@ -30,7 +30,6 @@ module.exports = require('./webpack.base.babel')({
   devServer: {
     hot: true,
     historyApiFallback: true,
-    contentBase: './',
     proxy: [
       {
         path: '**',
