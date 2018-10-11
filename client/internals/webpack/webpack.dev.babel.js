@@ -30,14 +30,15 @@ module.exports = require('./webpack.base.babel')({
   devServer: {
     hot: true,
     historyApiFallback: true,
+    port: 3000,
     proxy: [
       {
         path: '**',
         target: 'http://[::1]:8080',
         secure: false,
         changeOrigin: true,
-      }
-    ]
+      },
+    ],
   },
   performance: {
     hints: false,
