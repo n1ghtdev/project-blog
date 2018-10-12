@@ -7,6 +7,9 @@ import App from './containers/App';
 
 import configureStore from './configureStore';
 
+import './assets/base.scss';
+import './assets/reset.scss';
+
 const initialState = {};
 const history = createHistory();
 const store = configureStore(initialState, history);

@@ -25,7 +25,8 @@
     "react-router-dom": "^4.3.1",
     "react-router-redux": "next",
     "redux": "^4.0.0",
-    "redux-saga": "^0.16.2"
+    "redux-saga": "^0.16.2",
+    "styled-components": "^3.4.10"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
@@ -35,6 +36,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
+    "babel-plugin-styled-components": "^1.8.0",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "eslint": "^4.19.1",
@@ -46,6 +48,7 @@
     "eslint-plugin-react": "^7.11.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.9.3",
     "rimraf": "^2.6.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",

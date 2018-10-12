@@ -1,28 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchPost } from '../../../modules/blog/blogAction';
 
-class Post extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(fetchPost(this.props.match.params.id));
-  }
+class Post extends React.PureComponent {
   render() {
-    const { blog } = this.props;
-    const { posts } = blog;
+    const { post } = this.props;
     return (
       <div>
-        <h2>{ posts.title }</h2>
-        <p>{ posts.description }</p>
+        <h2>{ post.title }</h2>
+        <p>{ post.description }</p>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  blog: state.blog,
+const mapStateToProps = (state, ownProps) => ({
+  post: state.blog.posts.find((post) => post.id === ownProps.match.params.id),
 });
 
-Post.propTypes = {};
+Post.propTypes = {
+  post: PropTypes.object.isRequired,
+};
 
 export default connect(mapStateToProps)(Post);

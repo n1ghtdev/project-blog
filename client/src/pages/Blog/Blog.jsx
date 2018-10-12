@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { fetchPosts } from '../../modules/blog/blogAction';
+import BlogPosts from '../../components/BlogPosts';
+import Post from '../../components/BlogPosts/Post';
 
 class Blog extends React.Component {
   componentDidMount() {
@@ -10,17 +11,18 @@ class Blog extends React.Component {
   }
 
   render() {
-    const { blog } = this.props;
-
-    const blogPosts = blog.posts.map((post) =>
-      <li key={post.id}><Link to={`/blog/${post.id}`}>{post.title}</Link></li>);
+    const { posts } = this.props.blog;
+    const blogPosts = posts.map((post) =>
+      (<Post
+        key={post.id}
+        to={`/blog/${post.id}`}
+        title={post.title}
+        description={post.description}
+      />));
     return (
-      <div>
-        <h1>Blog Notes</h1>
-        <ul>
-          { blogPosts }
-        </ul>
-      </div>
+      <BlogPosts>
+        { blogPosts }
+      </BlogPosts>
     );
   }
 }

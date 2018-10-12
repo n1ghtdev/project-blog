@@ -14,8 +14,3 @@ export const fetchFailure = () => ({
 export const fetchPosts = () => ({
   type: 'FETCH_POSTS',
 });
-
-export const fetchPost = (id) => ({
-  type: 'FETCH_POST',
-  id,
-});
