@@ -4,30 +4,42 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Blog from '../pages/Blog';
 import Post from '../pages/Blog/Post';
+import AddPost from '../pages/Blog/AddPost';
 
 import AppWrapper from '../components/AppWrapper';
 import TopNav from '../components/TopNav';
 import Item from '../components/TopNav/Item';
+import InfoSection from '../components/InfoSection';
 import MidSection from '../components/MiddleSection';
-import BlogPosts from '../components/BlogPosts';
+import MainContainer from '../components/MainContainer';
+import SideContainer from '../components/SideContainer';
+
 
 export default function App() {
   return (
     <AppWrapper>
       <TopNav>
-        <Item to="/blog">Home</Item>
-        <Item to="/blog">Home</Item>
-        <Item to="/blog">Home</Item>
+        <Item to="/">Home</Item>
+        <Item to="/blog">About</Item>
+        <Item to="/blog/add-post">Add new post</Item>
       </TopNav>
+      <InfoSection>
+        Test
+      </InfoSection>
       <MidSection>
-        <Switch>
-          <Route exact path="/" component={Blog} />
-          <Route exact path="/blog" component={Blog} />
-          <Route path="/blog/:id" component={Post} />
-        </Switch>
-        <div style={{ flexBasis: '20%', height: '200px', background: 'black' }}></div>
+        <MainContainer>
+          <Switch>
+            <Route exact path="/" component={Blog} />
+            <Route exact path="/blog" component={Blog} />
+            <Route exact path="/blog/add-post" component={AddPost} />
+            <Route path="/blog/:id" component={Post} />
+          </Switch>
+        </MainContainer>
+        <SideContainer>
+          <p>HELLO</p>
+        </SideContainer>
       </MidSection>
-
+      {/* Footer */}
     </AppWrapper>
   );
 }

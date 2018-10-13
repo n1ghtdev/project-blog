@@ -5,7 +5,8 @@ import styled from 'styled-components';
 const MidSection = styled.div`
   display: flex;
   justify-content: space-around;
-  margin-top: 150px; /*temp*/
+  padding: 15px;
+  flex: 1;
 `;
 
 const MiddleSection = ({ children }) => (
