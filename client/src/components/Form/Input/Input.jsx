@@ -10,7 +10,8 @@ const FormLabel = styled.label`
 `;
 const FormInput = styled.input`
   padding: 10px;
-  width: 400px;
+  max-width: 500px;
+  width: 100%;
   border-radius: 3px;
   border: 1px solid #CFD8DC;
   &:focus {

@@ -9,7 +9,6 @@ public class BlogNote {
   public BlogNote() {}
 
   public BlogNote(String id, String title, String description) {
-    super();
     this.id = id;
     this.title = title;
     this.description = description;

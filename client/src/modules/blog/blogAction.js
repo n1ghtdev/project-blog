@@ -14,3 +14,14 @@ export const fetchFailure = () => ({
 export const fetchPosts = () => ({
   type: 'FETCH_POSTS',
 });
+
+export const addPostRequest = (payload) => ({
+  type: 'ADD_POST_REQUEST',
+  payload,
+});
+
+export const addPostReceive = (payload) => ({
+  type: 'ADD_POST_RECEIVE',
+  payload,
+});
+

@@ -1,24 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { addPostRequest } from '../../../modules/blog/blogAction';
 import Form from '../../../components/Form';
 import Input from '../../../components/Form/Input';
 import Textarea from '../../../components/Form/Textarea';
+import Button from '../../../components/Form/Button';
+
+
 class AddPost extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      id: '',
       title: '',
       description: '',
     };
 
     this.onChange = this.onChange.bind(this);
+    this.addPost = this.addPost.bind(this);
   }
-  componentDidMount() {
 
-  }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+  }
+  addPost(e) {
+    e.preventDefault();
+
+    // temp, replaces validation function for now
+    if (this.state.title === '' || this.state.description === '') {
+      alert('Fields must be filled!');
+      return;
+    }
+
+    this.props.addPostRequest(this.state);
   }
   render() {
     return (
@@ -39,13 +55,18 @@ class AddPost extends React.Component {
           placeholder="Description..."
           onChange={this.onChange}
         />
+        <Button onClick={this.addPost}>Add post</Button>
       </Form>
     );
   }
 }
 
-AddPost.propTypes = {
-
+const mapDispatchToProps = {
+  addPostRequest,
 };
 
-export default AddPost;
+AddPost.propTypes = {
+  addPostRequest: PropTypes.func,
+};
+
+export default connect(null, mapDispatchToProps)(AddPost);
