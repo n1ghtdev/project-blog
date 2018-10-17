@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../../modules/blog/blogAction';
+import { fetchData } from '../../modules/blog/blogAction';
 import BlogPosts from '../../components/BlogPosts';
 import Post from '../../components/BlogPosts/Post';
 
 class Blog extends React.Component {
   componentDidMount() {
-    this.props.dispatch(fetchPosts());
+    this.props.dispatch(fetchData());
   }
 
   render() {

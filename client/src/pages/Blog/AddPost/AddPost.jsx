@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addPostRequest } from '../../../modules/blog/blogAction';
+import { createPostRequest } from '../../../modules/blog/blogAction';
 import Form from '../../../components/Form';
 import Input from '../../../components/Form/Input';
 import Textarea from '../../../components/Form/Textarea';
@@ -34,7 +34,7 @@ class AddPost extends React.Component {
       return;
     }
 
-    this.props.addPostRequest(this.state);
+    this.props.createPostRequest(this.state);
   }
   render() {
     return (
@@ -62,11 +62,11 @@ class AddPost extends React.Component {
 }
 
 const mapDispatchToProps = {
-  addPostRequest,
+  createPostRequest,
 };
 
 AddPost.propTypes = {
-  addPostRequest: PropTypes.func,
+  createPostRequest: PropTypes.func,
 };
 
 export default connect(null, mapDispatchToProps)(AddPost);

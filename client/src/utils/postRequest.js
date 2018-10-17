@@ -11,12 +11,5 @@ export function postRequest(url, payload) {
       title: payload.title,
       description: payload.description,
     }),
-  })
-    .then((response) => {
-      if (response.status >= 200 && response.status < 300) {
-        return Promise.resolve(response);
-      }
-      return Promise.reject(response.statusText);
-    })
-    .then((response) => response.json());
+  });
 }

@@ -1,27 +1,28 @@
-export const fetchRequest = () => ({
-  type: 'FETCH_REQUEST',
-});
+import * as types from '../../constants/blogConstants';
 
 export const fetchSuccess = (payload) => ({
-  type: 'FETCH_SUCCESS',
+  type: types.FETCH_SUCCESS,
   payload,
 });
 
 export const fetchFailure = () => ({
-  type: 'FETCH_FAILURE',
+  type: types.FETCH_FAILURE,
 });
 
-export const fetchPosts = () => ({
-  type: 'FETCH_POSTS',
+export const fetchData = () => ({
+  type: types.FETCH_DATA,
 });
 
-export const addPostRequest = (payload) => ({
-  type: 'ADD_POST_REQUEST',
+export const createPostRequest = (payload) => ({
+  type: types.CREATE_POST_REQUEST,
   payload,
 });
 
-export const addPostReceive = (payload) => ({
-  type: 'ADD_POST_RECEIVE',
+export const createPostSuccess = (payload) => ({
+  type: types.CREATE_POST_SUCCESS,
   payload,
 });
 
+export const createPostFailure = () => ({
+  type: types.CREATE_POST_FAILURE,
+});

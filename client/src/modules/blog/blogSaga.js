@@ -1,19 +1,19 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { fetchBlogPosts } from '../../utils/fetchBlogPosts';
 import { postRequest } from '../../utils/postRequest';
-import { fetchRequest, fetchSuccess, fetchFailure, addPostReceive } from './blogAction';
+import { fetchSuccess, fetchFailure, createPostSuccess, createPostFailure } from './blogAction';
+import { FETCH_DATA, CREATE_POST_REQUEST } from '../../constants/blogConstants';
 
 export function* watchFetchPosts() {
-  yield takeEvery('FETCH_POSTS', fetchPostsAsync);
+  yield takeEvery(FETCH_DATA, fetchPostsAsync);
 }
 
 export function* watchAddPost() {
-  yield takeEvery('ADD_POST_REQUEST', addPostAsync);
+  yield takeEvery(CREATE_POST_REQUEST, createPostAsync);
 }
 
 function* fetchPostsAsync() {
   try {
-    yield put(fetchRequest());
     const data = yield call(fetchBlogPosts);
     yield put(fetchSuccess(data));
   } catch (err) {
@@ -21,14 +21,14 @@ function* fetchPostsAsync() {
   }
 }
 
-function* addPostAsync({ payload }) {
+function* createPostAsync({ payload }) {
   const requestURL = 'http://localhost:8080/api/blog';
   try {
-    const post = yield call(postRequest, requestURL, payload);
-    yield put(addPostReceive(post));
+    const response = yield call(postRequest, requestURL, payload);
+    const body = yield response.json();
+    yield put(createPostSuccess(body));
   } catch (err) {
-    if (err.name !== 'SyntaxError') {
-      console.log(`${err.name} - ${err.message} - ${err.stack}`);
-    }
+    console.log(`${err.name} - ${err.message} - ${err.stack}`);
+    yield put(createPostFailure());
   }
 }
