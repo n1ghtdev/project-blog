@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import { createPostRequest } from '../../../modules/blog/blogAction';
 import Form from '../../../components/Form';
 import Input from '../../../components/Form/Input';
 import Textarea from '../../../components/Form/Textarea';
 import Button from '../../../components/Form/Button';
-
+import { showModal } from '../../../modules/modal/modalAction';
+//import history from '../../../history';
 
 class AddPost extends React.Component {
   constructor(props) {
@@ -20,6 +22,13 @@ class AddPost extends React.Component {
 
     this.onChange = this.onChange.bind(this);
     this.addPost = this.addPost.bind(this);
+  }
+
+  componentDidUpdate() {
+    // looks ugly
+    if (this.props.post.created) {
+      this.props.showModal({ title: this.props.post.post.title, content: this.props.post.post.description });
+    }
   }
 
   onChange(e) {
@@ -39,6 +48,8 @@ class AddPost extends React.Component {
   render() {
     return (
       <Form method="POST">
+        <Helmet>
+        </Helmet>
         <Input
           title="Title:"
           name="title"
@@ -61,12 +72,19 @@ class AddPost extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  post: state.post,
+});
+
 const mapDispatchToProps = {
   createPostRequest,
+  showModal,
 };
 
 AddPost.propTypes = {
   createPostRequest: PropTypes.func,
+  showModal: PropTypes.func,
+  post: PropTypes.object,
 };
 
-export default connect(null, mapDispatchToProps)(AddPost);
+export default connect(mapStateToProps, mapDispatchToProps)(AddPost);

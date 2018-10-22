@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { blogReducer } from './blog/blogReducer';
 import { createPostReducer } from './blog/createPostReducer';
-
+import { modalReducer } from './modal/modalReducer';
 const routeInitialState = { location: null };
 
 const routeReducer = (state = routeInitialState, action) => {
@@ -18,6 +18,7 @@ const reducers = combineReducers({
   routing: routeReducer,
   blog: blogReducer,
   post: createPostReducer,
+  modal: modalReducer,
 });
 
 export default reducers;

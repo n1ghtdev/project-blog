@@ -6,6 +6,8 @@ import Blog from '../pages/Blog';
 import Post from '../pages/Blog/Post';
 import AddPost from '../pages/Blog/AddPost';
 
+import ModalHandler from './ModalHandler';
+
 import AppWrapper from '../components/AppWrapper';
 import TopNav from '../components/TopNav';
 import Item from '../components/TopNav/Item';
@@ -18,6 +20,7 @@ import SideContainer from '../components/SideContainer';
 export default function App() {
   return (
     <AppWrapper>
+      <ModalHandler />
       <TopNav>
         <Item to="/">Home</Item>
         <Item to="/blog">About</Item>

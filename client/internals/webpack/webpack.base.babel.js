@@ -89,7 +89,7 @@ module.exports = (options) => ({
   ]),
 
   resolve: {
-    modules: ['src', 'node_modules'],
+    modules: ['node_modules', 'src'],
     extensions: ['.js', '.jsx'],
   },
 
