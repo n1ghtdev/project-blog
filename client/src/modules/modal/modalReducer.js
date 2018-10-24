@@ -1,9 +1,7 @@
 import * as types from '../../constants/modalConstants';
 
 const initialState = {
-  title: '',
-  content: '',
-  active: false,
+  isOpen: false,
 };
 
 export const modalReducer = (state = initialState, action) => {
@@ -11,12 +9,10 @@ export const modalReducer = (state = initialState, action) => {
     case types.MODAL_ACTIVE:
       return {
         ...state,
-        title: action.payload.title,
-        content: action.payload.content,
-        active: true,
+        isOpen: true,
       };
     case types.MODAL_HIDDEN:
-      return { ...state, active: false };
+      return { ...state, isOpen: false };
     default:
       return state;
   }

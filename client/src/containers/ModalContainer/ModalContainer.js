@@ -1,17 +1,42 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Modal from '../../components/Modal';
 import { hideModal } from '../../modules/modal/modalAction';
 
-class ModalContainer extends React.PureComponent {
+class ModalContainer extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.onClose = this.onClose.bind(this);
+  }
+
+  onClose() {
+    this.props.hideModal();
+  }
+
   render() {
-    const { modal } = this.props;
+    const { isOpen } = this.props.modal;
+
     return (
-      <Modal title={modal.title} content={modal.content} active={modal.active} hideModal={this.props.hideModal} />
+      <React.Fragment>
+        <Modal
+          title={this.props.title}
+          content={this.props.content}
+          hideModal={this.onClose}
+          active={isOpen}
+        />
+      </React.Fragment>
     );
   }
 }
+
+ModalContainer.propTypes = {
+  hideModal: PropTypes.func,
+  title: PropTypes.string,
+  content: PropTypes.string,
+  modal: PropTypes.object,
+};
 
 const mapStateToProps = (state) => ({
   modal: state.modal,
@@ -19,11 +44,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   hideModal,
-};
-
-ModalContainer.propTypes = {
-  modal: PropTypes.object,
-  hideModal: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalContainer);

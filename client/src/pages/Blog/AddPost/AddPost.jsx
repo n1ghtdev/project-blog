@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
 import { createPostRequest } from '../../../modules/blog/blogAction';
 import Form from '../../../components/Form';
 import Input from '../../../components/Form/Input';
 import Textarea from '../../../components/Form/Textarea';
 import Button from '../../../components/Form/Button';
 import { showModal } from '../../../modules/modal/modalAction';
-//import history from '../../../history';
+import ModalPortal from '../../../containers/ModalContainer';
 
 class AddPost extends React.Component {
   constructor(props) {
@@ -24,14 +23,6 @@ class AddPost extends React.Component {
     this.addPost = this.addPost.bind(this);
   }
 
-  componentDidUpdate(prevProps) {
-    const { post } = this.props;
-
-    if (post.created !== prevProps.post.created) {
-      this.props.showModal({ title: post.post.title, content: post.post.description });
-    }
-  }
-
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -44,13 +35,13 @@ class AddPost extends React.Component {
       return;
     }
 
+    this.props.showModal(); // trigger modal-window on submit form
     this.props.createPostRequest(this.state);
   }
   render() {
     return (
       <Form method="POST">
-        <Helmet>
-        </Helmet>
+        <ModalPortal title={this.state.title} content={this.state.description} />
         <Input
           title="Title:"
           name="title"
@@ -73,10 +64,6 @@ class AddPost extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  post: state.post,
-});
-
 const mapDispatchToProps = {
   createPostRequest,
   showModal,
@@ -85,7 +72,6 @@ const mapDispatchToProps = {
 AddPost.propTypes = {
   createPostRequest: PropTypes.func,
   showModal: PropTypes.func,
-  post: PropTypes.object,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddPost);
+export default connect(null, mapDispatchToProps)(AddPost);

@@ -1,11 +1,15 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ModalContainer = styled.div`
+  display: none;
   ${({ active }) => active && `
+    display: block;
     z-index: 9999;
     position: fixed;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
@@ -14,7 +18,6 @@ const ModalContainer = styled.div`
 `;
 
 const ModalBox = styled.div`
-  display: none;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -22,9 +25,6 @@ const ModalBox = styled.div`
   background: orange;
   width: 300px;
   padding: 15px 15px 0 15px;
-  ${({ active }) => active && `
-    display: block;
-  `}
 `;
 
 const ModalContent = styled.div`
@@ -36,7 +36,9 @@ const ModalButtons = styled.div`
 `;
 const ModalTitle = styled.div``;
 
-const Modal = ({ title, content, active, children, hideModal }) => (
+const Modal = ({
+  title, content, active, children, hideModal, trigger,
+}) => { return ReactDOM.createPortal(
   <ModalContainer active={active}>
     <ModalBox active={active}>
       <ModalTitle>
@@ -49,8 +51,9 @@ const Modal = ({ title, content, active, children, hideModal }) => (
         <button onClick={hideModal}>Close</button>
       </ModalButtons>
     </ModalBox>
-  </ModalContainer>
-);
+  </ModalContainer>,
+  document.getElementById('root'))
+};
 
 Modal.propTypes = {
   children: PropTypes.any,
