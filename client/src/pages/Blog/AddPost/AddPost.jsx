@@ -24,10 +24,11 @@ class AddPost extends React.Component {
     this.addPost = this.addPost.bind(this);
   }
 
-  componentDidUpdate() {
-    // looks ugly
-    if (this.props.post.created) {
-      this.props.showModal({ title: this.props.post.post.title, content: this.props.post.post.description });
+  componentDidUpdate(prevProps) {
+    const { post } = this.props;
+
+    if (post.created !== prevProps.post.created) {
+      this.props.showModal({ title: post.post.title, content: post.post.description });
     }
   }
 

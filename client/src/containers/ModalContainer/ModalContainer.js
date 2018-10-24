@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Modal from '../../components/Modal';
-import { showModal, hideModal } from '../../modules/modal/modalAction';
+import { hideModal } from '../../modules/modal/modalAction';
 
-class ModalHandler extends React.PureComponent {
+class ModalContainer extends React.PureComponent {
   render() {
     const { modal } = this.props;
     return (
-      <Modal title={modal.title} content={modal.content} active={modal.active} />
+      <Modal title={modal.title} content={modal.content} active={modal.active} hideModal={this.props.hideModal} />
     );
   }
 }
@@ -18,12 +18,12 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  showModal,
   hideModal,
 };
 
-ModalHandler.propTypes = {
+ModalContainer.propTypes = {
   modal: PropTypes.object,
+  hideModal: PropTypes.func,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModalHandler);
+export default connect(mapStateToProps, mapDispatchToProps)(ModalContainer);

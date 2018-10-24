@@ -36,7 +36,7 @@ const ModalButtons = styled.div`
 `;
 const ModalTitle = styled.div``;
 
-const Modal = ({ title, content, active, children }) => (
+const Modal = ({ title, content, active, children, hideModal }) => (
   <ModalContainer active={active}>
     <ModalBox active={active}>
       <ModalTitle>
@@ -46,7 +46,7 @@ const Modal = ({ title, content, active, children }) => (
         { content }
       </ModalContent>
       <ModalButtons>
-        {/* :thinking: */}
+        <button onClick={hideModal}>Close</button>
       </ModalButtons>
     </ModalBox>
   </ModalContainer>
@@ -57,6 +57,7 @@ Modal.propTypes = {
   title: PropTypes.string,
   content: PropTypes.string,
   active: PropTypes.bool,
+  hideModal: PropTypes.any,
 };
 
 export default Modal;
