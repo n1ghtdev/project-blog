@@ -1,9 +1,10 @@
 import { all, fork } from 'redux-saga/effects';
-import { watchFetchPosts, watchAddPost } from './blog/blogSaga';
+import { watchFetchPosts, watchCreatePost, watchPostRedirect } from './blog/blogSaga';
 
 export default function* sagas() {
   yield all([
     fork(watchFetchPosts),
-    fork(watchAddPost),
+    fork(watchCreatePost),
+    fork(watchPostRedirect),
   ]);
 }

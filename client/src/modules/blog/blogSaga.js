@@ -1,15 +1,20 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { fetchBlogPosts } from '../../utils/fetchBlogPosts';
 import { postRequest } from '../../utils/postRequest';
+import pushHistory from '../../utils/pushHistory';
 import { fetchSuccess, fetchFailure, createPostSuccess, createPostFailure } from './blogAction';
-import { FETCH_DATA, CREATE_POST_REQUEST } from '../../constants/blogConstants';
+import { FETCH_DATA, CREATE_POST_REQUEST, CREATE_POST_REDIRECT } from '../../constants/blogConstants';
 
 export function* watchFetchPosts() {
   yield takeEvery(FETCH_DATA, fetchPostsAsync);
 }
 
-export function* watchAddPost() {
+export function* watchCreatePost() {
   yield takeEvery(CREATE_POST_REQUEST, createPostAsync);
+}
+
+export function* watchPostRedirect() {
+  yield takeEvery(CREATE_POST_REDIRECT, postRedirect);
 }
 
 function* fetchPostsAsync() {
@@ -30,5 +35,14 @@ function* createPostAsync({ payload }) {
   } catch (err) {
     console.log(`${err.name} - ${err.message} - ${err.stack}`);
     yield put(createPostFailure());
+  }
+}
+
+function* postRedirect({ payload }) {
+  try {
+    yield call(fetchPostsAsync);
+    yield call(pushHistory, payload.id);
+  } catch (err) {
+    console.log(`${err.name} - ${err.message} - ${err.stack}`);
   }
 }

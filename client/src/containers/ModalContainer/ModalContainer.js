@@ -3,27 +3,38 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Modal from '../../components/Modal';
 import { hideModal } from '../../modules/modal/modalAction';
-
+import { createPostRedirect } from '../../modules/blog/blogAction';
 class ModalContainer extends React.Component {
   constructor(props) {
     super(props);
 
     this.onClose = this.onClose.bind(this);
+    this.createPostRedirect = this.createPostRedirect.bind(this);
   }
 
   onClose() {
     this.props.hideModal();
   }
 
+  createPostRedirect() {
+    this.props.hideModal();
+    this.props.createPostRedirect({ id: this.props.redirectPath });
+  }
+
   render() {
-    const { isOpen } = this.props.modal;
+    console.log(this.props.redirectPath);
+    const {
+      title, content, isOpen, type,
+    } = this.props.modal;
 
     return (
       <React.Fragment>
         <Modal
-          title={this.props.title}
-          content={this.props.content}
+          title={title}
+          content={content}
           hideModal={this.onClose}
+          redirectModal={this.createPostRedirect}
+          type={type}
           active={isOpen}
         />
       </React.Fragment>
@@ -36,6 +47,8 @@ ModalContainer.propTypes = {
   title: PropTypes.string,
   content: PropTypes.string,
   modal: PropTypes.object,
+  redirectPath: PropTypes.object,
+  createPostRedirect: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
@@ -44,6 +57,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   hideModal,
+  createPostRedirect,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalContainer);

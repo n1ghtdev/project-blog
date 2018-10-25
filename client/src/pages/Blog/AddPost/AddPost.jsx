@@ -7,7 +7,7 @@ import Input from '../../../components/Form/Input';
 import Textarea from '../../../components/Form/Textarea';
 import Button from '../../../components/Form/Button';
 import { showModal } from '../../../modules/modal/modalAction';
-import ModalPortal from '../../../containers/ModalContainer';
+import ModalContainer from '../../../containers/ModalContainer';
 
 class AddPost extends React.Component {
   constructor(props) {
@@ -31,17 +31,19 @@ class AddPost extends React.Component {
 
     // temp, replaces validation function for now
     if (this.state.title === '' || this.state.description === '') {
-      alert('Fields must be filled!');
+      this.props.showModal({ title: 'Syntax Error', type: 'FAILURE', content: 'Fields must be filled!' });
       return;
     }
 
-    this.props.showModal(); // trigger modal-window on submit form
+    this.props.showModal({ type: 'SUCCESS', content: `"${this.state.title}" - successfully created` });
     this.props.createPostRequest(this.state);
   }
   render() {
+    const { post } = this.props.post;
+    console.log(post.id);
     return (
       <Form method="POST">
-        <ModalPortal title={this.state.title} content={this.state.description} />
+        <ModalContainer redirectPath={`blog/${post.id}`} />
         <Input
           title="Title:"
           name="title"
@@ -58,11 +60,15 @@ class AddPost extends React.Component {
           placeholder="Description..."
           onChange={this.onChange}
         />
-        <Button onClick={this.addPost}>Add post</Button>
+        <Button styles="form-button" onClick={this.addPost}>Add post</Button>
       </Form>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  post: state.post,
+});
 
 const mapDispatchToProps = {
   createPostRequest,
@@ -72,6 +78,7 @@ const mapDispatchToProps = {
 AddPost.propTypes = {
   createPostRequest: PropTypes.func,
   showModal: PropTypes.func,
+  post: PropTypes.object,
 };
 
-export default connect(null, mapDispatchToProps)(AddPost);
+export default connect(mapStateToProps, mapDispatchToProps)(AddPost);

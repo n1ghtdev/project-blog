@@ -26,3 +26,8 @@ export const createPostSuccess = (payload) => ({
 export const createPostFailure = () => ({
   type: types.CREATE_POST_FAILURE,
 });
+
+export const createPostRedirect = (payload) => ({
+  type: types.CREATE_POST_REDIRECT,
+  payload,
+});

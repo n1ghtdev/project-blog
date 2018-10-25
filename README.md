@@ -19,15 +19,17 @@ Done
 * page for adding new posts to blog
 * implementation of modal-window with redux
 * POST-request for blog posts
+* modal content, modal-error, redirect button
 
 TODO
 -----
 
 ### Front-end
-- [ ] modal content, modal-error, redirect button
+- [ ] blog categories redux store, container, components..
 - [ ] clean up in project structure
 - [ ] merge client and server folders into one, make client work with Maven *(optional)*
 - [ ] replace webpack-dev-server with expressjs and webpack-hot/dev-middleware *(optional)*
 ### Back-end
+- [ ] blog categories repository, service..
 - [ ] POST-request validation - check if data is not empty or not valid
 - [ ] connect DB
