@@ -40,7 +40,6 @@ class AddPost extends React.Component {
   }
   render() {
     const { post } = this.props.post;
-    console.log(post.id);
     return (
       <Form method="POST">
         <ModalContainer redirectPath={`blog/${post.id}`} />

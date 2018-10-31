@@ -41,7 +41,7 @@ function* createPostAsync({ payload }) {
 function* postRedirect({ payload }) {
   try {
     yield call(fetchPostsAsync);
-    yield call(pushHistory, payload.id);
+    yield call(pushHistory, payload.path);
   } catch (err) {
     console.log(`${err.name} - ${err.message} - ${err.stack}`);
   }

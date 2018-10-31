@@ -18,11 +18,10 @@ class ModalContainer extends React.Component {
 
   createPostRedirect() {
     this.props.hideModal();
-    this.props.createPostRedirect({ id: this.props.redirectPath });
+    this.props.createPostRedirect({ path: this.props.redirectPath });
   }
 
   render() {
-    console.log(this.props.redirectPath);
     const {
       title, content, isOpen, type,
     } = this.props.modal;

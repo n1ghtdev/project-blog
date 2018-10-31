@@ -25,6 +25,7 @@ TODO
 -----
 
 ### Front-end
+- [ ] implement draft-js to add blog post input (description)
 - [ ] blog categories redux store, container, components..
 - [ ] clean up in project structure
 - [ ] merge client and server folders into one, make client work with Maven *(optional)*
