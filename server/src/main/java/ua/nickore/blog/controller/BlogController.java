@@ -28,7 +28,7 @@ public class BlogController {
   }
 
   @RequestMapping("/api/blog/{id}")
-  public BlogNote getNote(@PathVariable String id) {
+  public BlogNote getNote(@PathVariable Long id) {
     return blogService.getNote(id);
   }
 

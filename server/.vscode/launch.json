@@ -7,7 +7,7 @@
     
     {
       "type": "java",
-      "name": "Debug (Launch)",
+      "name": "SpringBoot",
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "console": "internalConsole",

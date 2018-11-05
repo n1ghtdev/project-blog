@@ -20,6 +20,7 @@ Done
 * implementation of modal-window with redux
 * POST-request for blog posts
 * modal content, modal-error, redirect button
+* connected to postgreSQL-db
 
 TODO
 -----
@@ -31,6 +32,5 @@ TODO
 - [ ] merge client and server folders into one, make client work with Maven *(optional)*
 - [ ] replace webpack-dev-server with expressjs and webpack-hot/dev-middleware *(optional)*
 ### Back-end
-- [ ] blog categories repository, service..
+- [ ] update note controller/service
 - [ ] POST-request validation - check if data is not empty or not valid
-- [ ] connect DB
