@@ -19,7 +19,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "notes")
-public class BlogNote {
+public class Note {
 
   @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -38,9 +38,9 @@ public class BlogNote {
   @JsonIgnore
   private Category category;
 
-  public BlogNote() {}
+  public Note() {}
 
-  public BlogNote(Long id, String title, String description) {
+  public Note(Long id, String title, String description) {
     this.id = id;
     this.title = title;
     this.description = description;

@@ -26,6 +26,11 @@ public class CatController {
     return catService.getAllCategories();
   }
 
+  @GetMapping("/blog/{categoryId}")
+  public Category getCategory(@PathVariable Long categoryId) {
+    return catService.getCategory(categoryId);
+  }
+
   @PostMapping("/blog")
   public void createCategory(@Valid @RequestBody Category category) {
     catService.addCategory(category);
