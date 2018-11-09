@@ -27,7 +27,7 @@ public class NoteController {
     return blogService.getAllNotes();
   }
 
-  @RequestMapping("/api/blog/{id}")
+  @RequestMapping("/api/blog/note/{id}")
   public Note getNote(@PathVariable Long id) {
     return blogService.getNote(id);
   }
@@ -37,7 +37,7 @@ public class NoteController {
   public Note addNote(@RequestBody Note note) {
     blogService.addNote(note);
 
-    return new Note(note.getId(), note.getTitle(), note.getDescription()); // response to client
+    return new Note(note.getId(), note.getCategory(), note.getTitle(), note.getDescription()); // response to client
   }
   
 }

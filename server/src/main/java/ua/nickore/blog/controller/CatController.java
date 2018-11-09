@@ -21,27 +21,27 @@ public class CatController {
   @Autowired
   CatService catService;
 
-  @GetMapping("/blog")
+  @GetMapping("/api/blog/categories")
   public List<Category> getAllCategories() {
     return catService.getAllCategories();
   }
 
-  @GetMapping("/blog/{categoryId}")
-  public Category getCategory(@PathVariable Long categoryId) {
-    return catService.getCategory(categoryId);
-  }
+  // @GetMapping("/api/blog/{categoryId}")
+  // public Category getCategory(@PathVariable Long categoryId) {
+  //   return catService.getCategory(categoryId);
+  // }
 
-  @PostMapping("/blog")
+  @PostMapping("/api/blog/categories")
   public void createCategory(@Valid @RequestBody Category category) {
     catService.addCategory(category);
   }
 
-  @PutMapping("/blog/{categoryId}")
+  @PutMapping("/api/blog/categories/{categoryId}")
   public void updateCategory(@PathVariable Long categoryId, @Valid @RequestBody Category categoryRequest) {
     catService.updateCategory(categoryId, categoryRequest.getName());
   }
 
-  @DeleteMapping("/blog/{categoryId}")
+  @DeleteMapping("/api/blog/categories/{categoryId}")
   public void deleteCategory(@PathVariable Long categoryId) {
     catService.deleteCategory(categoryId);
   }

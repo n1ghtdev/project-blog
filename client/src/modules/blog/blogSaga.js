@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { fetchBlogPosts } from '../../utils/fetchBlogPosts';
+import fetchResponseJSON from '../../utils/fetchResponseJSON';
 import { postRequest } from '../../utils/postRequest';
 import pushHistory from '../../utils/pushHistory';
 import { fetchSuccess, fetchFailure, createPostSuccess, createPostFailure } from './blogAction';
@@ -19,7 +19,7 @@ export function* watchPostRedirect() {
 
 function* fetchPostsAsync() {
   try {
-    const data = yield call(fetchBlogPosts);
+    const data = yield call(fetchResponseJSON, '/api/blog');
     yield put(fetchSuccess(data));
   } catch (err) {
     yield put(fetchFailure());

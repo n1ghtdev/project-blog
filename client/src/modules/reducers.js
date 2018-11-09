@@ -3,6 +3,10 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 import { blogReducer } from './blog/blogReducer';
 import { createPostReducer } from './blog/createPostReducer';
 import { modalReducer } from './modal/modalReducer';
+import { categoryReducer } from './category/categoryReducer';
+
+/* make reducers export by default */
+
 const routeInitialState = { location: null };
 
 const routeReducer = (state = routeInitialState, action) => {
@@ -19,6 +23,7 @@ const reducers = combineReducers({
   blog: blogReducer,
   post: createPostReducer,
   modal: modalReducer,
+  cats: categoryReducer,
 });
 
 export default reducers;

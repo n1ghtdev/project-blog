@@ -1,5 +1,7 @@
 package ua.nickore.blog.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,7 +22,6 @@ import org.hibernate.annotations.OnDeleteAction;
 @Entity
 @Table(name = "notes")
 public class Note {
-
   @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Long id;
@@ -40,8 +41,9 @@ public class Note {
 
   public Note() {}
 
-  public Note(Long id, String title, String description) {
+  public Note(Long id, Category category, String title, String description) {
     this.id = id;
+    this.category = category;
     this.title = title;
     this.description = description;
   }
@@ -58,6 +60,20 @@ public class Note {
    */
   public void setId(Long id) {
     this.id = id;
+  }
+  
+  /**
+   * @return the category
+   */
+  public Category getCategory() {
+    return category;
+  }
+  
+  /**
+   * @param category the category to set
+   */
+  public void setCategory(Category category) {
+    this.category = category;
   }
 
   /**

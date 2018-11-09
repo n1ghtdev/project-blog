@@ -13,6 +13,7 @@ import InfoSection from '../components/InfoSection';
 import MidSection from '../components/MiddleSection';
 import MainContainer from '../components/MainContainer';
 import SideContainer from '../components/SideContainer';
+import NavCatContainer from './NavCatContainer';
 
 
 export default function App() {
@@ -32,11 +33,11 @@ export default function App() {
             <Route exact path="/" component={Blog} />
             <Route exact path="/blog" component={Blog} />
             <Route exact path="/blog/add-post" component={AddPost} />
-            <Route path="/blog/:id" component={Post} />
+            <Route path="/blog/:categoryId/:id" component={Post} />
           </Switch>
         </MainContainer>
         <SideContainer>
-          <p>HELLO</p>
+          <NavCatContainer />
         </SideContainer>
       </MidSection>
       {/* Footer */}

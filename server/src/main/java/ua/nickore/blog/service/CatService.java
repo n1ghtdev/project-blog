@@ -25,9 +25,9 @@ public class CatService {
     return catRepository.findAll();
   }
 
-  public Category getCategory(Long id) {
-    return catRepository.findById(id).orElse(null);
-  }
+  // public Category getCategory(Long id) {
+  //   return catRepository.findById(id).orElse(null);
+  // }
 
   public void addCategory(Category category) {
     catRepository.save(category);

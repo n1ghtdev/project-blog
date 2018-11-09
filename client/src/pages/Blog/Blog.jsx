@@ -15,7 +15,7 @@ class Blog extends React.Component {
     const blogPosts = posts.map((post) =>
       (<Post
         key={post.id}
-        to={`/blog/${post.id}`}
+        to={`/blog/${post.cat_id}/${post.id}`}
         title={post.title}
         description={post.description}
       />));
