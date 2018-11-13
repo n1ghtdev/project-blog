@@ -14,8 +14,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -33,10 +31,9 @@ public class Note {
   @Column(columnDefinition = "text")
   private String description;
 
-  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @ManyToOne(optional = false)
   @JoinColumn(name = "cat_id", nullable = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
-  @JsonIgnore
   private Category category;
 
   public Note() {}

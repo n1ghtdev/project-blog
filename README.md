@@ -26,6 +26,8 @@ TODO
 -----
 
 ### Front-end
+- [ ] sort posts by categories
+- [ ] make category, post ID as ID-TITLE (Clean URL)
 - [ ] implement draft-js to add blog post input (description)
 - [ ] blog categories redux store, container, components..
 - [ ] clean up in project structure
