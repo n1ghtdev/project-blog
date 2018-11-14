@@ -33,7 +33,7 @@ export default function App() {
             <Route exact path="/" component={Blog} />
             <Route exact path="/blog" component={Blog} />
             <Route exact path="/blog/add-post" component={AddPost} />
-            <Route path="/blog/:categoryId/:id" component={Post} />
+            <Route path="/post/:id" component={Post} />
           </Switch>
         </MainContainer>
         <SideContainer>

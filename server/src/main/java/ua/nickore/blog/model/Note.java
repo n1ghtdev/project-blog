@@ -1,10 +1,7 @@
 package ua.nickore.blog.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,6 +19,7 @@ import org.hibernate.annotations.OnDeleteAction;
 public class Note {
   @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
+  @Column(columnDefinition = "id")
   private Long id;
 
   @NotBlank

@@ -8,13 +8,13 @@ import Textarea from '../../../components/Form/Textarea';
 import Button from '../../../components/Form/Button';
 import { showModal } from '../../../modules/modal/modalAction';
 import ModalContainer from '../../../containers/ModalContainer';
+import generateURI from '../../../utils/generateURI';
 
 class AddPost extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      id: '',
       title: '',
       description: '',
     };
@@ -42,7 +42,7 @@ class AddPost extends React.Component {
     const { post } = this.props.post;
     return (
       <Form method="POST">
-        <ModalContainer redirectPath={`blog/${post.id}`} />
+        <ModalContainer redirectPath={`post/${post.id}/${generateURI(post.title)}`} />
         <Input
           title="Title:"
           name="title"

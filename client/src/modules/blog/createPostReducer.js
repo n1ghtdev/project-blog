@@ -1,7 +1,7 @@
 import { CREATE_POST_REQUEST, CREATE_POST_SUCCESS, CREATE_POST_FAILURE } from '../../constants/blogConstants';
 
 const initialState = {
-  post: { id: '', title: '', description: '' },
+  post: { title: '', description: '' },
   creating: false,
   created: false,
   error: false,
@@ -14,7 +14,6 @@ export const createPostReducer = (state = initialState, action) => {
     case CREATE_POST_SUCCESS:
       return {
         post: {
-          id: action.payload.id,
           title: action.payload.title,
           description: action.payload.description,
         },

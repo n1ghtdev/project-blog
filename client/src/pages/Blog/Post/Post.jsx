@@ -15,7 +15,7 @@ class Post extends React.PureComponent {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  post: state.blog.posts.find((post) => post.id === Number(ownProps.match.params.id)),
+  post: state.blog.posts.find((post) => post.id === Number(ownProps.match.params.id.match(/^[^-]+/g).join(''))),
 });
 
 Post.propTypes = {

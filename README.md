@@ -1,11 +1,12 @@
 # Project Blog
 Simple blog with Spring Boot on back-end and React/Redux on front-end.
 
-Used in this project
+Tools
 -----
 * Spring Boot - java mvc framework
 * Maven - project management tool
 * Embedded tomcat - java servlet container
+* PostgreSQL - database
 * React - javascript library
 * Redux - javascript state container
 * Webpack - module bundler
