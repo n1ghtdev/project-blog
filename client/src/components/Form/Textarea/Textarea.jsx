@@ -1,13 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Label from '../Label';
 
-const FormGroup = styled.div``;
-const FormLabel = styled.label`
-  display: block;
-  padding-left: 5px;
-  padding-bottom: 5px;
-`;
 const FormTextarea = styled.textarea`
   padding: 10px;
   border-radius: 3px;
@@ -20,8 +15,7 @@ const FormTextarea = styled.textarea`
 const Textarea = ({
   name, value, type, onChange, placeholder, title,
 }) => (
-  <FormGroup>
-    <FormLabel htmlFor={name}>{ title }</FormLabel>
+  <Label htmlFor={name} title={title}>
     <FormTextarea
       id={name}
       name={name}
@@ -32,7 +26,7 @@ const Textarea = ({
       rows="20"
       cols="75"
     />
-  </FormGroup>
+  </Label>
 );
 
 Textarea.propTypes = {

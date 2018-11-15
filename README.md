@@ -1,5 +1,4 @@
 # Project Blog
-Simple blog with Spring Boot on back-end and React/Redux on front-end.
 
 Tools
 -----
@@ -16,17 +15,16 @@ Tools
 
 Done
 ----- 
-* get single blog page by id from response api
-* page for adding new posts to blog
-* implementation of modal-window with redux
-* POST-request for blog posts
-* modal content, modal-error, redirect button
-* connected to postgreSQL-db
+* blog page with list of notes
+* note page
+* add note page with modal
+* connect postgreSQL
 
 TODO
 -----
 
 ### Front-end
+- [ ] dispose createPostReducer
 - [ ] sort posts by categories
 - [ ] make category, post ID as ID-TITLE (Clean URL)
 - [ ] implement draft-js to add blog post input (description)
@@ -35,5 +33,5 @@ TODO
 - [ ] merge client and server folders into one, make client work with Maven *(optional)*
 - [ ] replace webpack-dev-server with expressjs and webpack-hot/dev-middleware *(optional)*
 ### Back-end
-- [ ] update note controller/service
+- [ ] response to add note POST-request with id of new note
 - [ ] POST-request validation - check if data is not empty or not valid

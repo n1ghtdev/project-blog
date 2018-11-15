@@ -46,7 +46,7 @@ ModalContainer.propTypes = {
   title: PropTypes.string,
   content: PropTypes.string,
   modal: PropTypes.object,
-  redirectPath: PropTypes.object,
+  redirectPath: PropTypes.string,
   createPostRedirect: PropTypes.func,
 };
 

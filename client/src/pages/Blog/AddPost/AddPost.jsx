@@ -6,6 +6,7 @@ import Form from '../../../components/Form';
 import Input from '../../../components/Form/Input';
 import Textarea from '../../../components/Form/Textarea';
 import Button from '../../../components/Form/Button';
+import Select from '../../../components/Form/Select';
 import { showModal } from '../../../modules/modal/modalAction';
 import ModalContainer from '../../../containers/ModalContainer';
 import generateURI from '../../../utils/generateURI';
@@ -16,6 +17,7 @@ class AddPost extends React.Component {
 
     this.state = {
       title: '',
+      cat_id: '',
       description: '',
     };
 
@@ -24,13 +26,17 @@ class AddPost extends React.Component {
   }
 
   onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    if (e.target.name === 'category') {
+      this.setState({ cat_id: Number(e.target.value) });
+    } else {
+      this.setState({ [e.target.name]: e.target.value });
+    }
   }
   addPost(e) {
     e.preventDefault();
 
     // temp, replaces validation function for now
-    if (this.state.title === '' || this.state.description === '') {
+    if (this.state.title === '' || this.state.description === '' || this.state.category === '') {
       this.props.showModal({ title: 'Syntax Error', type: 'FAILURE', content: 'Fields must be filled!' });
       return;
     }
@@ -40,6 +46,7 @@ class AddPost extends React.Component {
   }
   render() {
     const { post } = this.props.post;
+    const { cats } = this.props;
     return (
       <Form method="POST">
         <ModalContainer redirectPath={`post/${post.id}/${generateURI(post.title)}`} />
@@ -49,6 +56,13 @@ class AddPost extends React.Component {
           value={this.state.title}
           type="input"
           placeholder="Title..."
+          onChange={this.onChange}
+        />
+        <Select
+          title="Category: "
+          options={cats.list}
+          name="category"
+          value={this.state.category}
           onChange={this.onChange}
         />
         <Textarea
@@ -67,6 +81,7 @@ class AddPost extends React.Component {
 
 const mapStateToProps = (state) => ({
   post: state.post,
+  cats: state.cats,
 });
 
 const mapDispatchToProps = {
@@ -78,6 +93,7 @@ AddPost.propTypes = {
   createPostRequest: PropTypes.func,
   showModal: PropTypes.func,
   post: PropTypes.object,
+  cats: PropTypes.object,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddPost);
