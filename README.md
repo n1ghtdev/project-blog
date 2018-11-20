@@ -24,14 +24,13 @@ TODO
 -----
 
 ### Front-end
-- [ ] dispose createPostReducer
+- [x] blog categories redux store, container, components..
+- [ ] dispose createPostReducer *(if there is any other option)*
 - [ ] sort posts by categories
-- [ ] make category, post ID as ID-TITLE (Clean URL)
-- [ ] implement draft-js to add blog post input (description)
-- [ ] blog categories redux store, container, components..
+- [ ] implement draft-js to add-note page desc-textarea
 - [ ] clean up in project structure
 - [ ] merge client and server folders into one, make client work with Maven *(optional)*
 - [ ] replace webpack-dev-server with expressjs and webpack-hot/dev-middleware *(optional)*
 ### Back-end
-- [ ] response to add note POST-request with id of new note
+- [x] response to add note POST-request with id of new note
 - [ ] POST-request validation - check if data is not empty or not valid
