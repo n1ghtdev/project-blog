@@ -18,7 +18,7 @@ const Select = ({
   <Label htmlFor={name} title={title}>
     <FormSelect name={name} value={value} onChange={onChange}>
       { options.map((option) => (
-        <Option key={option.id} value={option.id}>{option.name}</Option>
+        <Option key={option.id} value={JSON.stringify(option)}>{option.name}</Option>
       )) }
     </FormSelect>
   </Label>

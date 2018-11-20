@@ -17,20 +17,15 @@ class AddPost extends React.Component {
 
     this.state = {
       title: '',
-      cat_id: '',
+      category: { id: 0 },
       description: '',
     };
 
     this.onChange = this.onChange.bind(this);
     this.addPost = this.addPost.bind(this);
   }
-
   onChange(e) {
-    if (e.target.name === 'category') {
-      this.setState({ cat_id: Number(e.target.value) });
-    } else {
-      this.setState({ [e.target.name]: e.target.value });
-    }
+    this.setState({ [e.target.name]: e.target.value });
   }
   addPost(e) {
     e.preventDefault();
@@ -42,7 +37,11 @@ class AddPost extends React.Component {
     }
 
     this.props.showModal({ type: 'SUCCESS', content: `"${this.state.title}" - successfully created` });
-    this.props.createPostRequest(this.state);
+    this.props.createPostRequest(
+      this.state.title,
+      typeof this.state.category === 'string' ? JSON.parse(this.state.category) : this.state.category,
+      this.state.description
+    );
   }
   render() {
     const { post } = this.props.post;

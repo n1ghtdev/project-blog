@@ -1,4 +1,4 @@
-export function postRequest(url, payload) {
+export function postRequest(url, title, category, description) {
   return fetch(url, {
     method: 'POST',
     mode: 'cors',
@@ -7,8 +7,9 @@ export function postRequest(url, payload) {
       'Access-Control-Allow-Origin': '*',
     },
     body: JSON.stringify({
-      title: payload.title,
-      description: payload.description,
+      title,
+      category,
+      description,
     }),
   });
 }

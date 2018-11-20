@@ -10,7 +10,7 @@ const Option = ({ value, children }) => (
 
 Option.propTypes = {
   children: PropTypes.string.isRequired,
-  value: PropTypes.number,
+  value: PropTypes.string,
 };
 
 export default Option;

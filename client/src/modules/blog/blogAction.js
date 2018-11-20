@@ -13,9 +13,11 @@ export const fetchData = () => ({
   type: types.FETCH_DATA,
 });
 
-export const createPostRequest = (payload) => ({
+export const createPostRequest = (title, category, description) => ({
   type: types.CREATE_POST_REQUEST,
-  payload,
+  title,
+  category,
+  description,
 });
 
 export const createPostSuccess = (payload) => ({

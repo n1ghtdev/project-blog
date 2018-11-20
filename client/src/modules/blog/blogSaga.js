@@ -26,10 +26,10 @@ function* fetchPostsAsync() {
   }
 }
 
-function* createPostAsync({ payload }) {
+function* createPostAsync({ title, category, description }) {
   const requestURL = 'http://localhost:8080/api/blog';
   try {
-    const response = yield call(postRequest, requestURL, payload);
+    const response = yield call(postRequest, requestURL, title, category, description);
     const body = yield response.json();
     yield put(createPostSuccess(body));
   } catch (err) {
